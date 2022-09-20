@@ -3,8 +3,8 @@ const {
   createTourService,
   getTourByIdService,
   updateTourByIdService,
- getCheapestToursService,
- getTrendingToursService
+  getCheapestToursService,
+  getTrendingToursService,
 } = require("../services/tour.services");
 
 exports.getTours = async (req, res, next) => {
@@ -59,10 +59,10 @@ exports.getTours = async (req, res, next) => {
       queries.limit = parseInt(limit);
     }
 
-    if(!req.query.limit){
+    if (!req.query.limit) {
       queries.limit = 10;
     }
-    if(!req.query.page){
+    if (!req.query.page) {
       queries.page = 1;
     }
 

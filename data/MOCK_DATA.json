@@ -1,10 +1,35 @@
 [
   {
-    "name": "Cool pack",
-    "price": 770,
-    "description": "Too cool package",
-    "view": 77,
+    "view": 124,
+    "name": "Cool Package1",
+    "price": 1041,
+    "description": "One of the coool package",
     "status": "available",
-    "image": "https://media.discordapp.net/attachments/632264939683315755/1021455315239190609/702114645648998492.png"
+    "image": "https://media.discordapp.net/attachments/632264939683315755/1021455315239190609/702114645648998492.png",
+    "createdAt": "2022-09-19T18:38:05.216Z",
+    "updatedAt": "2022-09-19T18:41:51.164Z",
+    "v": 0
+  },
+  {
+    "view": 28,
+    "name": "Cool Package2",
+    "price": 541,
+    "description": "One of the coool package",
+    "status": "available",
+    "image": "https://media.discordapp.net/attachments/632264939683315755/1021455315239190609/702114645648998492.png",
+    "createdAt": "2022-09-19T18:42:40.788Z",
+    "updatedAt": "2022-09-19T19:42:22.472Z",
+    "v": 0
+  },
+  {
+    "view": 0,
+    "name": "Cool Package3",
+    "price": 1541,
+    "description": "One of the coool package",
+    "status": "available",
+    "image": "https://media.discordapp.net/attachments/632264939683315755/1021455315239190609/702114645648998492.png",
+    "createdAt": "2022-09-19T18:49:27.100Z",
+    "updatedAt": "2022-09-19T18:49:27.100Z",
+    "__v": 0
   }
 ]

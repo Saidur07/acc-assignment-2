@@ -26,7 +26,7 @@ exports.getTourByIdService = async (tourId) => {
 };
 
 exports.updateTourByIdService = async (tourId, data) => {
-    //upd
+  //upd
   const tour = await Tour.updateOne(
     { _id: tourId },
     { $set: data },
@@ -36,13 +36,13 @@ exports.updateTourByIdService = async (tourId, data) => {
 };
 
 exports.getTrendingToursService = async () => {
-    //get top 3 most views tours
-    const tours = await Tour.find().sort({ views: -1 }).limit(3);
-    return tours;
+  //get top 3 most views tours
+  const tours = await Tour.find().sort({ views: -1 }).limit(3);
+  return tours;
 };
 
 exports.getCheapestToursService = async () => {
-    //get top 3 cheapest tours
-    const tours = await Tour.find().sort({ price: 1 }).limit(3);
-    return tours;
+  //get top 3 cheapest tours
+  const tours = await Tour.find().sort({ price: 1 }).limit(3);
+  return tours;
 };
