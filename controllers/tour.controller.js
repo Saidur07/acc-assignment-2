@@ -11,26 +11,21 @@ exports.getTours = async (req, res, next) => {
   try {
     //Filters Starts
 
-    //{price:{$ gt:50}
-    //{ price: { gt: '50' } }
-    // console.log(req.query);
-
     let filters = { ...req.query };
 
-    //sort , page , limit -> excluding the query fields from filters
-    const excludeFields = ["sort", "page", "limit"];
+    const excludeFields = ["sort", "page", "limit", "fields"];
     excludeFields.forEach((field) => delete filters[field]);
 
-    //gt ,lt ,gte .lte, eq, neq
     let filtersString = JSON.stringify(filters);
     filtersString = filtersString.replace(
-      /\b(gt|gte|lt|lte|eq|neq)\b/g,
+      /\b(gt|gte|lt|lte|eq|ne)\b/g,
       (match) => `$${match}`
     );
 
     filters = JSON.parse(filtersString);
 
     //Filters Ends
+    //---------------------------------------------------------------------------------------------
 
     //Query Starts
 
@@ -41,22 +36,21 @@ exports.getTours = async (req, res, next) => {
       // price,qunatity   -> 'price quantity'
       const sortBy = req.query.sort.split(",").join(" ");
       queries.sortBy = sortBy;
-      // console.log(sortBy);
     }
 
     //fields query
     if (req.query.fields) {
       const fields = req.query.fields.split(",").join(" ");
       queries.fields = fields;
-      // console.log(fields);
     }
 
     //page query
-    if (req.query.page) {
+    if (req.query.page || req.query.limit) {
       const { page = 1, limit = 10 } = req.query;
       const skip = (page - 1) * parseInt(limit);
       queries.skip = skip;
       queries.limit = parseInt(limit);
+      queries.page = Number(page);
     }
 
     if (!req.query.limit) {

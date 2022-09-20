@@ -1,15 +1,17 @@
 const Tour = require("../models/Tour");
 
 exports.getToursService = async (filters, queries) => {
-  const tour = await Tour.find(filters)
+  const tours = await Tour.find(filters)
     .skip(queries.skip)
     .limit(queries.limit)
     .select(queries.fields)
     .sort(queries.sortBy);
 
-  const total = await Tour.countDocuments(filters);
-  const page = Math.ceil(total / queries.limit);
-  return { total, page, products: tour };
+  const totalCounts = await Tour.countDocuments(filters);
+  const totalPages = Math.ceil(totalCounts / queries.limit);
+  const currentPage = queries.page;
+  const currentPageItems = tours.length;
+  return { totalCounts, currentPageItems, totalPages, currentPage, tours };
 };
 
 exports.createTourService = async (data) => {
@@ -37,7 +39,7 @@ exports.updateTourByIdService = async (tourId, data) => {
 
 exports.getTrendingToursService = async () => {
   //get top 3 most views tours
-  const tours = await Tour.find().sort({ views: -1 }).limit(3);
+  const tours = await Tour.find().sort({ view: -1 }).limit(3);
   return tours;
 };
 
